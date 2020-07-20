@@ -1,5 +1,5 @@
 {
-  "name": "tic-toc",
+  "name": "tic-tac",
   "version": "1.0.0",
   "description": "Tic toc toe is simple game made for fun ",
   "main": "index.js",
@@ -7,9 +7,12 @@
     "inquirer": "^7.3.1",
     "prompt": "^1.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jest": "^26.1.0"
+  },
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "test": "jest"
   },
   "keywords": [],
   "author": "Ana",

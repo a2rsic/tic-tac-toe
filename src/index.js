@@ -84,7 +84,7 @@ function startGame() {
   inquirer.prompt(questions).then((answers) => {
     state.player1.name = answers["firstName"] || "X";
     state.player2.name = answers["secondName"] || "O";
-    playerTurn(checkPlayersMark());
+    playerTurn(state.player1.value);
   });
 }
 
@@ -150,13 +150,13 @@ function print(msg, color = "green") {
   console.log(colors[color].bold(msg));
 }
 
-function checkPlayersMark(mark) {
-  if (state.xIsNext) {
-    return (mark = state.player1.value);
-  } else {
-    return (mark = state.player2.value);
-  }
-}
+// function checkPlayersMark(mark) {
+//   if (state.xIsNext) {
+//     return (mark = state.player1.value);
+//   } else {
+//     return (mark = state.player2.value);
+//   }
+// }
 
 function checkPlayersName(player) {
   if (player === "X") {
