@@ -4,15 +4,19 @@ TIC TAC Toe - A simple game using node.js command line application.
 
 Install tic-tac-toe using:
 
-### `npm install`
+### `yarn install`
 
 ## Usage
 
 Just run the cli on terminal:
 
-### `npm run start`
+### `yarn start`
 
-Runs the app in the development mode.<br>
+Runs the app in the game mode.
+
+### `yarn test`
+
+Runs the code tests.
 
 ## Description
 
