@@ -1,4 +1,3 @@
-const prompt = require("prompt");
 const inquirer = require("inquirer");
 const colors = require("colors");
 
@@ -104,9 +103,7 @@ function playerTurn(player) {
     },
   ];
 
-  prompt.start();
-
-  prompt.get(properties, function (error, result) {
+  inquirer.prompt(properties).then((result) => {
     const value = result["coordinates"].trim();
     const position = Object.keys(fieldsRange)[
       Object.values(fieldsRange).indexOf(value)
@@ -149,14 +146,6 @@ function checkFieldRange(value) {
 function print(msg, color = "green") {
   console.log(colors[color].bold(msg));
 }
-
-// function checkPlayersMark(mark) {
-//   if (state.xIsNext) {
-//     return (mark = state.player1.value);
-//   } else {
-//     return (mark = state.player2.value);
-//   }
-// }
 
 function checkPlayersName(player) {
   if (player === "X") {

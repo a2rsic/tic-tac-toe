@@ -4,8 +4,8 @@
   "description": "Tic toc toe is simple game made for fun ",
   "main": "index.js",
   "dependencies": {
-    "inquirer": "^7.3.1",
-    "prompt": "^1.0.0"
+    "colors": "^1.4.0",
+    "inquirer": "^7.3.1"
   },
   "devDependencies": {
     "jest": "^26.1.0"
