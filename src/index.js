@@ -143,10 +143,6 @@ function checkFieldRange(value) {
   }
 }
 
-function print(msg, color = "green") {
-  console.log(colors[color].bold(msg));
-}
-
 function checkPlayersName(player) {
   if (player === "X") {
     return state.player1.name;
@@ -190,6 +186,10 @@ function validate(position) {
   return board[position] === " ";
 }
 
+function print(msg, color = "green") {
+  console.log(colors[color].bold(msg));
+}
+
 print(
   "Game started : \n" +
     "    1     2     3 \n" +
@@ -199,3 +199,14 @@ print(
 );
 
 startGame();
+
+exports.checkPlayersName = checkPlayersName;
+exports.isGameFinished = isGameFinished;
+exports.startGame = startGame;
+exports.checkWinner = checkWinner;
+exports.makeBoard = makeBoard;
+exports.playerTurn = playerTurn;
+exports.validate = validate;
+exports.checkFieldRange = checkFieldRange;
+exports.winCombinations = winCombinations;
+exports.board = board;
