@@ -16,7 +16,6 @@ const state = {
     name: "O",
     value: "O",
   },
-  xIsNext: true,
   board: { ...emptyBoard },
 };
 
