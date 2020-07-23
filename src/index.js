@@ -74,7 +74,7 @@ function updateBoard(board, position, mark) {
 function playerTurn(player) {
   const coordinatesQuestions = [
     {
-      message: `Your turn ${checkPlayersName(player)}, enter coordinates`,
+      message: `Your turn ${getPlayersName(player)}, enter coordinates`,
       name: "coordinates",
       validator: /[0-9 ]+/,
       warning:
@@ -106,7 +106,7 @@ function playerTurn(player) {
 
 function checkGameScore(player, board, combinations) {
   if (checkWinner(player, board, combinations)) {
-    print(`You won ${checkPlayersName(player)}`);
+    print(`You won ${getPlayersName(player)}`);
     return "done";
   } else if (isGameFinished(board)) {
     print("Game Tie");
@@ -149,7 +149,7 @@ function validate(board, position) {
   return board[position] === " ";
 }
 
-function checkPlayersName(player) {
+function getPlayersName(player) {
   if (player === "X") {
     return state.player1.name;
   } else {
@@ -167,7 +167,7 @@ module.exports = {
   validate,
   findInputError,
   isGameFinished,
-  checkPlayersName,
+  getPlayersName,
   askQuestions,
   updateBoard,
   checkWinner,

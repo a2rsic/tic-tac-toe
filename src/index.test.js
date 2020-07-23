@@ -2,7 +2,7 @@ const {
   validate,
   findInputError,
   isGameFinished,
-  checkPlayersName,
+  getPlayersName,
   askQuestions,
   updateBoard,
   checkWinner,
@@ -191,7 +191,7 @@ describe("checkWinner()", () => {
   });
 });
 
-describe("checkPlayersName()", () => {
+describe("getPlayersName()", () => {
   const expectedState = {
     player1: {
       name: "Player 1",
@@ -205,7 +205,7 @@ describe("checkPlayersName()", () => {
   test("should return first player's name", () => {
     const playerX = expectedState.player1.value;
 
-    const player = checkPlayersName("X");
+    const player = getPlayersName("X");
 
     expect(player).toBeDefined();
     expect(player).not.toBe(" ");
@@ -215,7 +215,7 @@ describe("checkPlayersName()", () => {
   test("should return second player's name ", () => {
     const playerO = expectedState.player2.value;
 
-    const player = checkPlayersName("O");
+    const player = getPlayersName("O");
 
     expect(player).toBeDefined();
     expect(player).not.toBe(" ");
