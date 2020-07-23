@@ -25,7 +25,7 @@ function askQuestions(questions) {
 }
 
 function createBoard(board) {
-  const currentBoard =
+  return (
     "\n" +
     " " +
     board[1] +
@@ -47,8 +47,8 @@ function createBoard(board) {
     board[8] +
     " | " +
     board[9] +
-    "\n";
-  print(currentBoard);
+    "\n"
+  );
 }
 
 function startGame() {
@@ -67,8 +67,9 @@ function startGame() {
   });
 }
 
-function makeBoard(board, position, mark) {
-  return (board[position] = mark.toUpperCase());
+function updateBoard(board, position, mark) {
+  board[position] = mark.toUpperCase();
+  return board;
 }
 
 function playerTurn(player) {
@@ -90,10 +91,12 @@ function playerTurn(player) {
     ];
 
     if (validate(state.board, position)) {
-      makeBoard(state.board, position, player);
-      createBoard(state.board);
+      const updatedBoard = updateBoard(state.board, position, player);
+      const currentBoard = createBoard(updatedBoard);
 
-      checkGameScore(player, state.board);
+      print(currentBoard);
+
+      checkGameScore(player, currentBoard, winCombinations);
     } else {
       const error = findInputError(validInputFields, value);
       print(error, "red");
@@ -102,13 +105,13 @@ function playerTurn(player) {
   });
 }
 
-function checkGameScore(player, board) {
-  if (checkWinner(player, board)) {
+function checkGameScore(player, board, combinations) {
+  if (checkWinner(player, board, combinations)) {
     print(`You won ${checkPlayersName(player)}`);
-    return;
+    return "done";
   } else if (isGameFinished(board)) {
     print("Game Tie");
-    return;
+    return "tie";
   }
   const nextPlayer = player === "X" ? "O" : "X";
   playerTurn(nextPlayer);
@@ -124,11 +127,11 @@ function findInputError(validFields, value) {
   }
 }
 
-function checkWinner(player, board) {
-  for (let i = 0; i < winCombinations.length; i++) {
+function checkWinner(player, board, combinations) {
+  for (let i = 0; i < combinations.length; i++) {
     let mark = 0;
-    for (let j = 0; j < winCombinations[i].length; j++) {
-      if (board[winCombinations[i][j]] === player) {
+    for (let j = 0; j < combinations[i].length; j++) {
+      if (board[combinations[i][j]] === player) {
         mark++;
       }
       if (mark === 3) {
@@ -142,6 +145,7 @@ function isGameFinished(board) {
   const isEndGame = Object.values(board).every((el) => el.trim());
   return isEndGame;
 }
+
 function validate(board, position) {
   return board[position] === " ";
 }
@@ -166,4 +170,7 @@ module.exports = {
   isGameFinished,
   checkPlayersName,
   askQuestions,
+  updateBoard,
+  checkWinner,
+  checkGameScore,
 };
